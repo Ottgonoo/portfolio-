@@ -16,34 +16,31 @@ const navLinks = [
 const projects = [
   {
     title: "E-siticom.com",
-    description:
-      "A website designed for users of the financial accounting group, intended for receiving and accessing information.",
+    description: "A website designed for users of the financial accounting group, intended for receiving and accessing information.",
     tech: ["React", "Tailwind CSS", "Api integration"],
     image: "/aa.png",
     link: "https://e-siticom.com/",
   },
   {
     title: "University system",
-    description:
-      "An intelligent system where students, parents, and teachers can access and manage grades, performance, exams, and all related academic data.",
-    tech: ["React", "Next.js", "Shadcn UI", "Api integration", "Tailwind CSS"],
+    description: "An intelligent system designed for university students, allowing them, their parents, and teachers to access and manage grades, academic performance, exams, and all related information in one place.",
+    tech: ["React", "Next.js", "Shadcn ui", "Api integration", "Tailwind CSS"],
     image: "/Univercity.png",
     link: "https://lms.zokhiomj.mn/mn",
   },
   {
     title: "ERP system",
-    description:
-      "A complete ERP solution to improve organizational workflow, efficiency, and internal communication.",
-    tech: ["React", "Next.js", "Shadcn UI", "Api integration", "Tailwind CSS"],
+    description: "An organization management ERP system designed to streamline workflows and improve efficiency for employees.",
+    tech: ["React", "Next.js", "Shadcn ui", "Api integration", "Tailwind CSS"],
     image: "/hamaague.jpg",
+    image1: "/hamaague.jpg",
     link: "#",
   },
   {
-    title: "Citizen-district platform",
-    description:
-      "A system that streamlines information flow between local districts and citizens, enhancing communication & digital services.",
-    tech: ["React", "Next.js", "Shadcn UI", "Api integration", "Tailwind CSS"],
-    image: "/soon.jpg",
+    title: "Citizen-district communication platform",
+    description: "A system designed to streamline and digitalize the flow of information from local districts to citizens, improving communication and collaboration between residents and district offices",
+    tech: ["React", "Next.js", "Shadcn ui", "Api integration", "Tailwind CSS"],
+    image: "/loooov.jpg",
     link: "#",
   },
 ];
@@ -60,41 +57,43 @@ export default function WorksPage() {
 
   const isActive = (href) => {
     if (href === "/") return pathname === "/";
+    if (href.startsWith("#")) return false;
     return pathname === href;
   };
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden text-white">
-      {/* Background */}
+      {/* Background gradients */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_circle_at_10%_10%,rgba(99,102,241,0.35),transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_circle_at_90%_0%,rgba(236,72,153,0.28),transparent_60%)]" />
 
       {/* Header */}
-      <header className="relative z-10 flex items-center justify-between px-6 py-6 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:px-12">
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-full overflow-hidden border border-white/20 shadow-[0_0_30px_rgba(129,140,248,0.35)] bg-white/10">
+      <header className="relative z-10 flex items-center justify-between px-6 py-6 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:px-12">
+        <div className="flex items-center gap-3 sm:justify-self-start">
+          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 text-base font-semibold text-white/90 shadow-[0_0_30px_rgba(129,140,248,0.35)]">
             <Image
               src="/Profile.png"
-              alt="Profile"
+              alt="Otgontuya logo"
               width={70}
               height={70}
               className="h-full w-full object-cover"
+              priority
             />
           </div>
-          <span className="text-sm uppercase tracking-[0.3em] text-white/60">
+          <span className="text-sm font-medium uppercase tracking-[0.3em] text-white/60">
             Portfolio
           </span>
         </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden sm:flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm backdrop-blur-md">
+        {/* Desktop Navigation */}
+        <nav className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium backdrop-blur-md sm:flex sm:justify-self-center">
           {navLinks.map(({ label, href }) => (
             <Link
               key={label}
               href={href}
-              className={`px-4 py-2 rounded-full transition-all ${
+              className={`relative px-4 py-2 rounded-full transition-all duration-300 ${
                 isActive(href)
-                  ? "bg-white/10 text-white shadow-[0_4px_12px_rgba(168,85,247,0.3)] font-semibold"
+                  ? "text-white bg-white/10 shadow-[0_4px_12px_rgba(168,85,247,0.3)] font-semibold"
                   : "text-white/60 hover:text-white hover:bg-white/5"
               }`}
             >
@@ -103,27 +102,29 @@ export default function WorksPage() {
           ))}
         </nav>
 
-        {/* Mobile button */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="sm:hidden w-10 h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80"
+          className="sm:hidden flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 text-white/80 hover:text-white hover:bg-white/10 transition-all"
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
 
-        {/* Mobile Nav */}
+        {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="absolute top-full left-0 right-0 mt-2 mx-6 sm:hidden flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 z-50">
-            {navLinks.map(({ label, href }) => (
+          <nav className="absolute top-full left-0 right-0 mt-2 mx-6 sm:hidden flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+            {navLinks.map(({ label, href }, index) => (
               <Link
                 key={label}
                 href={href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`px-4 py-3 rounded-lg transition-all ${
+                className={`px-4 py-3 rounded-lg transition-all duration-300 animate-in fade-in slide-in-from-left-4 ${
                   isActive(href)
-                    ? "bg-white/10 text-white shadow-md"
+                    ? "text-white bg-white/10 shadow-[0_4px_12px_rgba(168,85,247,0.3)] font-semibold"
                     : "text-white/60 hover:text-white hover:bg-white/5"
                 }`}
+                style={{ animationDelay: `${index * 50}ms` }}
               >
                 {label}
               </Link>
@@ -132,74 +133,64 @@ export default function WorksPage() {
         )}
       </header>
 
-      {/* Main */}
-      <main className="relative z-10 flex flex-1 flex-col items-center px-6 py-5 sm:px-12">
-        <div className="w-full max-w-6xl flex flex-col gap-6">
-          <div
-            className={`text-center transition-all duration-1000 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-
-            }`}
-          >
-            <h1 className=" text-3xl font-semibold sm:text-4xl">My works </h1>
+      {/* Main content */}
+      <main className="relative z-10 flex flex-1 flex-col items-center px-6 py-16 sm:px-12">
+        <div className="relative z-10 flex w-full max-w-6xl flex-col gap-6">
+          <div className={`text-center transition-all duration-1000 ${
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            <h1 className="text-3xl font-semibold text-white sm:text-4xl">
+              My works only Front-end
+            </h1>
             <p className="mt-4 text-white/80">
-              A collection of projects I’ve built focusing on UI/UX and frontend engineering.
+              A collection of projects I&apos;ve worked on, showcasing my skills in front-end development and design.
             </p>
           </div>
 
-          {/* PROJECT GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
-            {projects.map((project, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+            {projects.map((project, index) => (
               <div
-                key={i}
-                className={`group relative flex flex-col rounded-xl border border-white/10 
-                bg-white/5 p-4 shadow-[0_8px_20px_rgba(67,56,202,0.18)] 
-                transition-all duration-300 hover:border-white/20 hover:bg-white/10 
-                hover:shadow-[0_12px_30px_rgba(67,56,202,0.3)]
-                ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                style={{ transitionDelay: `${i * 80}ms` }}
+                key={index}
+                className={`group rounded-xl border border-white/10 bg-white/5 p-4 shadow-[0_8px_20px_rgba(67,56,202,0.18)] transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-[0_12px_30px_rgba(67,56,202,0.3)] ${
+                  isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Image */}
-                <div className="relative w-full aspect-[16/9] rounded-lg border border-white/10 overflow-hidden mb-4">
+                {/* Single image */}
+                <div className="relative w-full h-28 sm:h-32 rounded-lg border border-white/10 overflow-hidden mb-3">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-all duration-300"
+                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 </div>
 
-                {/* Title */}
-                <h3 className="text-sm font-semibold mb-1 line-clamp-1">{project.title}</h3>
+                <h3 className="text-sm font-semibold text-white mb-2 line-clamp-1">{project.title}</h3>
+                <p className="text-xs text-white/70 mb-3 leading-relaxed line-clamp-2">{project.description}</p>
+                
+                <div className="flex flex-col gap-2.5">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tech.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="rounded-md bg-white/5 border border-white/10 px-2 py-0.5 text-[10px] text-white/60"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
 
-                {/* Description */}
-                <p className="text-xs text-white/70 mb-3 line-clamp-3 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Tech */}
-                <div className="flex flex-wrap gap-1.5 mb-3">
-                  {project.tech.map((tech, j) => (
-                    <span
-                      key={j}
-                      className="px-2 py-0.5 text-[10px] rounded-md bg-white/5 border border-white/10 text-white/60"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Visit Button - fixed bottom right */}
-                <div className="mt-auto flex justify-end">
                   {project.link !== "#" && (
                     <a
                       href={project.link}
                       target="_blank"
-                      className="flex items-center gap-1 px-3 py-1.5 bg-white/10 border border-white/20 rounded-md 
-                      text-[11px] text-white/80 hover:bg-white/20 transition"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-1.5 px-3 py-1.5 bg-white/10 border border-white/20 rounded-md text-[11px] text-white/80 hover:bg-white/20 hover:text-white transition-all duration-200 w-full"
                     >
                       <ExternalLink className="h-3 w-3" />
-                      Visit
+                      Visit Link
                     </a>
                   )}
                 </div>
@@ -209,20 +200,18 @@ export default function WorksPage() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="relative z-10 flex items-center justify-between px-6 pb-8 sm:px-12">
         <div className="flex items-center gap-2 text-xs text-white/40">
-          <span className="h-8 w-8 flex items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm text-white/80">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold text-white/80">
             N
           </span>
           <span>© 2025 Portfolio.</span>
         </div>
-
-        <div className="hidden sm:flex gap-3 text-xs text-white/40">
+        <div className="hidden gap-3 text-xs text-white/40 sm:flex">
           <Link href="#privacy" className="hover:text-white/70">
             Privacy
           </Link>
-          <span>•</span>
+          <span aria-hidden="true">•</span>
           <Link href="#terms" className="hover:text-white/70">
             Terms
           </Link>

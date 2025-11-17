@@ -141,98 +141,84 @@ export default function AboutPage() {
                     <div className={`mt-8 rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 shadow-[0_10px_25px_rgba(67,56,202,0.22)] transition-all duration-1000 ${
                         isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}>
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            {/* What I do */}
+                            <div className="lg:col-span-2">
+                                <h2 className="text-xl font-semibold text-white mb-4 pb-2 border-b border-white/10">What I do</h2>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-white/80">
+                                    <div className="flex items-start gap-2">
+                                        <span className="text-purple-400 mt-0.5">•</span>
+                                        <span>Responsive web apps with React & Next.js</span>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <span className="text-purple-400 mt-0.5">•</span>
+                                        <span>Design system implementation & documentation</span>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <span className="text-purple-400 mt-0.5">•</span>
+                                        <span>High-fidelity prototypes with motion & micro-interactions</span>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <span className="text-purple-400 mt-0.5">•</span>
+                                        <span>Building and maintaining internal ERP systems</span>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <span className="text-purple-400 mt-0.5">•</span>
+                                        <span>Creating reusable UI components using Tailwind CSS & UI libraries</span>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <span className="text-purple-400 mt-0.5">•</span>
+                                        <span>Integrating APIs and collaborating closely with backend teams</span>
+                                    </div>
+                                    <div className="flex items-start gap-2 sm:col-span-2">
+                                        <span className="text-purple-400 mt-0.5">•</span>
+                                        <span>Writing clean, organized, and scalable code</span>
+                                    </div>
+                                </div>
+                            </div>
 
-{/* What I do */}
-<div className="lg:col-span-2">
-  <h2 className="text-2xl font-bold text-white mb-5 pb-3 border-b border-white/10">
-    What I do
-  </h2>
+                            {/* Toolset */}
+                            <div>
+                                <h2 className="text-xl font-semibold text-white mb-4 pb-2 border-b border-white/10">Toolset</h2>
+                                <div className="space-y-4 text-sm text-white/80">
+                                    <div>
+                                        <h3 className="font-semibold text-white mb-1">Frontend Frameworks & Libraries</h3>
+                                        <p>Next.js, React, Tailwind CSS, Shadcn UI</p>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-white mb-1">Languages</h3>
+                                        <p>TypeScript, JavaScript, Node.js, Python, SQL</p>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-white mb-1">Design & Collaboration Tools</h3>
+                                        <p>Figma</p>
+                                    </div>
+                                </div>
+                            </div>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    {[
-      "Responsive web apps with React & Next.js",
-      "Design system implementation & documentation",
-      "High-fidelity prototypes with motion & micro-interactions",
-      "Building and maintaining internal ERP systems",
-      "Creating reusable UI components using Tailwind CSS & UI libraries",
-      "Integrating APIs and collaborating closely with backend teams",
-      "Writing clean, organized, and scalable code",
-    ].map((item, i) => (
-      <div
-        key={i}
-        className="flex items-start gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition"
-      >
-        <span className="text-purple-400 mt-0.5">•</span>
-        <span className="text-white/80 text-sm">{item}</span>
-      </div>
-    ))}
-  </div>
-</div>
-
-{/* Toolset */}
-<div>
-  <h2 className="text-2xl font-bold text-white mb-5 pb-3 border-b border-white/10">
-    Toolset
-  </h2>
-
-  <div className="space-y-5">
-    <div className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition">
-      <h3 className="text-white font-semibold mb-1">Frontend</h3>
-      <p className="text-white/70 text-sm">Next.js, React, Tailwind CSS, Shadcn UI</p>
-    </div>
-
-    <div className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition">
-      <h3 className="text-white font-semibold mb-1">Languages</h3>
-      <p className="text-white/70 text-sm">TypeScript, JavaScript, Node.js, Python, SQL</p>
-    </div>
-
-    <div className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition">
-      <h3 className="text-white font-semibold mb-1">Design & Tools</h3>
-      <p className="text-white/70 text-sm">Figma</p>
-    </div>
-  </div>
-</div>
-
-{/* My hobbies */}
-<div className="lg:col-span-3 pt-8 border-t border-white/10">
-  <h2 className="text-2xl font-bold text-white mb-6 pb-3 border-b border-white/10">
-    My hobbies
-  </h2>
-
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    {[
-      {
-        title: "Handicrafts",
-        text: "Crochet & knitting; small hand-made textile projects",
-      },
-      {
-        title: "Cultural interests",
-        text: "History of Mongolia; traditional songs",
-      },
-      {
-        title: "Baking & Cooking",
-        text: "Making traditional layered cookies, cakes & treats",
-      },
-      {
-        title: "Other",
-        text: "Creative hand projects, reading, watching movies",
-      },
-    ].map((hobby, i) => (
-      <div
-        key={i}
-        className="p-5 rounded-xl bg-white/5 hover:bg-white/10 transition"
-      >
-        <h3 className="font-semibold text-white text-base mb-1">
-          {hobby.title}
-        </h3>
-        <p className="text-white/70 text-sm">{hobby.text}</p>
-      </div>
-    ))}
-  </div>
-</div>
-</div>
-
+                            {/* My hobbies */}
+                            <div className="lg:col-span-3 pt-6 border-t border-white/10">
+                                <h2 className="text-xl font-semibold text-white mb-4 pb-2 border-b border-white/10">My hobbies</h2>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-white/80">
+                                    <div>
+                                        <h3 className="font-semibold text-white mb-1">Handicrafts</h3>
+                                        <p>Crochet & knitting; small hand-made textile projects</p>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-white mb-1">Cultural interests</h3>
+                                        <p>History of Mongolia; traditional songs</p>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-white mb-1">Baking & Cooking</h3>
+                                        <p>Making traditional layered cookies , cakes, and other homemade treats</p>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-white mb-1">Other</h3> 
+                                        <p>Small crafts and creative projects by hand, reading books and watching movies</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>

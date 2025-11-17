@@ -105,7 +105,7 @@ export default function ContactPage() {
         )}
       </header>
 
-      <main className="relative z-10 flex flex-1 flex-col items-center px-6 py-5  sm:px-12">
+      <main className="relative z-10 flex flex-1 flex-col items-center px-6 sm:px-12">
         <div className="relative z-10 flex w-full max-w-3xl flex-col gap-10">
           <div className={`text-center transition-all duration-1000 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -114,7 +114,7 @@ export default function ContactPage() {
               Let&apos;s work together
             </h1>
             <p className="mt-4 text-white/80">
-              If you have a work proposal or collaboration in mind, you can reach out to me via my social media channels. I'd be happy to connect!
+              If you have a work proposal or collaboration in mind, you can reach out to me via my social media channels. I&apos;d be happy to connect!
             </p>
           </div>
 
