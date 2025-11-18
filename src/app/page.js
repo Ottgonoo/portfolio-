@@ -170,15 +170,7 @@ export default function Home() {
           </span>
           <span>© 2025 Portfolio.</span>
         </div>
-        <div className="hidden gap-3 text-xs text-white/40 sm:flex">
-          <Link href="#privacy" className="hover:text-white/70">
-            Privacy
-          </Link>
-          <span aria-hidden="true">•</span>
-          <Link href="#terms" className="hover:text-white/70">
-            Terms
-          </Link>
-        </div>
+        
       </footer>
     </div>
   );

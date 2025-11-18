@@ -223,23 +223,7 @@ export default function AboutPage() {
                 </div>
             </main>
 
-            <footer className="relative z-10 flex items-center justify-between px-6 pb-8 sm:px-12">
-                <div className="flex items-center gap-2 text-xs text-white/40">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold text-white/80">
-                        N
-                    </span>
-                    <span>© 2025 Portfolio.</span>
-                </div>
-                <div className="hidden gap-3 text-xs text-white/40 sm:flex">
-                    <Link href="#privacy" className="hover:text-white/70">
-                        Privacy
-                    </Link>
-                    <span aria-hidden="true">•</span>
-                    <Link href="#terms" className="hover:text-white/70">
-                        Terms
-                    </Link>
-                </div>
-            </footer>
+            
         </div>
     );
 }

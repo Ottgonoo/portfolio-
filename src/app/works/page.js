@@ -1,65 +1,74 @@
-'use client';
+'use client'
 
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ExternalLink, Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { ExternalLink, Menu, X } from 'lucide-react'
+import { useState, useEffect } from 'react'
+
+// Force rendering on client
+if (typeof window === 'undefined') {
+  // Server-side code if needed
+}
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About me", href: "/about" },
-  { label: "Works", href: "/works" },
-  { label: "Contact", href: "/contact" },
-];
+  { label: 'Home', href: '/' },
+  { label: 'About me', href: '/about' },
+  { label: 'Works', href: '/works' },
+  { label: 'Contact', href: '/contact' },
+]
 
 const projects = [
   {
-    title: "E-siticom.com",
-    description: "A website designed for users of the financial accounting group, intended for receiving and accessing information.",
-    tech: ["React", "Tailwind CSS", "Api integration"],
-    image: "/aa.png",
-    link: "https://e-siticom.com/",
+    title: 'E-siticom.com',
+    description:
+      'A website designed for users of the financial accounting group, intended for receiving and accessing information.',
+    tech: ['React', 'Tailwind CSS', 'Api integration'],
+    image: '/aa.png',
+    link: 'https://e-siticom.com/',
   },
   {
-    title: "University system",
-    description: "An intelligent system designed for university students, allowing them, their parents, and teachers to access and manage grades, academic performance, exams, and all related information in one place.",
-    tech: ["React", "Next.js", "Shadcn ui", "Api integration", "Tailwind CSS"],
-    image: "/Univercity.png",
-    link: "https://lms.zokhiomj.mn/mn",
+    title: 'University system',
+    description:
+      'An intelligent system designed for university students, allowing them, their parents, and teachers to access and manage grades, academic performance, exams, and all related information in one place.',
+    tech: ['React', 'Next.js', 'Shadcn ui', 'Api integration', 'Tailwind CSS'],
+    image: '/Univercity.png',
+    link: 'https://lms.zokhiomj.mn/mn',
   },
   {
-    title: "ERP system",
-    description: "An organization management ERP system designed to streamline workflows and improve efficiency for employees.",
-    tech: ["React", "Next.js", "Shadcn ui", "Api integration", "Tailwind CSS"],
-    image: "/hamaague.jpg",
-    image1: "/hamaague.jpg",
-    link: "#",
+    title: 'ERP system',
+    description:
+      'An organization management ERP system designed to streamline workflows and improve efficiency for employees.',
+    tech: ['React', 'Next.js', 'Shadcn ui', 'Api integration', 'Tailwind CSS'],
+    image: '/hamaague.jpg',
+    image1: '/hamaague.jpg',
+    link: '#',
   },
   {
-    title: "Citizen-district communication platform",
-    description: "A system designed to streamline and digitalize the flow of information from local districts to citizens, improving communication and collaboration between residents and district offices",
-    tech: ["React", "Next.js", "Shadcn ui", "Api integration", "Tailwind CSS"],
-    image: "/loooov.jpg",
-    link: "#",
+    title: 'Citizen-district communication platform',
+    description:
+      'A system designed to streamline and digitalize the flow of information from local districts to citizens, improving communication and collaboration between residents and district offices',
+    tech: ['React', 'Next.js', 'Shadcn ui', 'Api integration', 'Tailwind CSS'],
+    image: '/soon.jpg',
+    link: '#',
   },
-];
+]
 
 export default function WorksPage() {
-  const pathname = usePathname();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const pathname = usePathname()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 50);
-    return () => clearTimeout(timer);
-  }, []);
+    const timer = setTimeout(() => setIsLoaded(true), 50)
+    return () => clearTimeout(timer)
+  }, [])
 
-  const isActive = (href) => {
-    if (href === "/") return pathname === "/";
-    if (href.startsWith("#")) return false;
-    return pathname === href;
-  };
+  const isActive = href => {
+    if (href === '/') return pathname === '/'
+    if (href.startsWith('#')) return false
+    return pathname === href
+  }
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden text-white">
@@ -93,8 +102,8 @@ export default function WorksPage() {
               href={href}
               className={`relative px-4 py-2 rounded-full transition-all duration-300 ${
                 isActive(href)
-                  ? "text-white bg-white/10 shadow-[0_4px_12px_rgba(168,85,247,0.3)] font-semibold"
-                  : "text-white/60 hover:text-white hover:bg-white/5"
+                  ? 'text-white bg-white/10 shadow-[0_4px_12px_rgba(168,85,247,0.3)] font-semibold'
+                  : 'text-white/60 hover:text-white hover:bg-white/5'
               }`}
             >
               {label}
@@ -108,7 +117,11 @@ export default function WorksPage() {
           className="sm:hidden flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 text-white/80 hover:text-white hover:bg-white/10 transition-all"
           aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {isMobileMenuOpen ? (
+            <X className="h-5 w-5" />
+          ) : (
+            <Menu className="h-5 w-5" />
+          )}
         </button>
 
         {/* Mobile Navigation */}
@@ -121,8 +134,8 @@ export default function WorksPage() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`px-4 py-3 rounded-lg transition-all duration-300 animate-in fade-in slide-in-from-left-4 ${
                   isActive(href)
-                    ? "text-white bg-white/10 shadow-[0_4px_12px_rgba(168,85,247,0.3)] font-semibold"
-                    : "text-white/60 hover:text-white hover:bg-white/5"
+                    ? 'text-white bg-white/10 shadow-[0_4px_12px_rgba(168,85,247,0.3)] font-semibold'
+                    : 'text-white/60 hover:text-white hover:bg-white/5'
                 }`}
                 style={{ animationDelay: `${index * 50}ms` }}
               >
@@ -134,16 +147,19 @@ export default function WorksPage() {
       </header>
 
       {/* Main content */}
-      <main className="relative z-10 flex flex-1 flex-col items-center px-6 py-16 sm:px-12">
+      <main className="relative z-10 flex flex-1 flex-col items-center px-6 py-10 sm:px-12">
         <div className="relative z-10 flex w-full max-w-6xl flex-col gap-6">
-          <div className={`text-center transition-all duration-1000 ${
-            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
+          <div
+            className={`text-center transition-all duration-1000 ${
+              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <h1 className="text-3xl font-semibold text-white sm:text-4xl">
-              My works only Front-end
+              My works
             </h1>
             <p className="mt-4 text-white/80">
-              A collection of projects I&apos;ve worked on, showcasing my skills in front-end development and design.
+              A collection of projects I&apos;ve worked on, showcasing my skills
+              in front-end development and design.
             </p>
           </div>
 
@@ -151,8 +167,10 @@ export default function WorksPage() {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className={`group rounded-xl border border-white/10 bg-white/5 p-4 shadow-[0_8px_20px_rgba(67,56,202,0.18)] transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-[0_12px_30px_rgba(67,56,202,0.3)] ${
-                  isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`group flex flex-col rounded-xl border border-white/10 bg-white/5 p-4 shadow-[0_8px_20px_rgba(67,56,202,0.18)] transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-[0_12px_30px_rgba(67,56,202,0.3)] ${
+                  isLoaded
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
@@ -167,32 +185,36 @@ export default function WorksPage() {
                   />
                 </div>
 
-                <h3 className="text-sm font-semibold text-white mb-2 line-clamp-1">{project.title}</h3>
-                <p className="text-xs text-white/70 mb-3 leading-relaxed line-clamp-2">{project.description}</p>
-                
-                <div className="flex flex-col gap-2.5">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="rounded-md bg-white/5 border border-white/10 px-2 py-0.5 text-[10px] text-white/60"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <h3 className="text-sm font-semibold text-white mb-2 line-clamp-1">
+                  {project.title}
+                </h3>
+                <p className="text-xs text-white/70 mb-3 leading-relaxed line-clamp-2">
+                  {project.description}
+                </p>
 
-                  {project.link !== "#" && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-1.5 px-3 py-1.5 bg-white/10 border border-white/20 rounded-md text-[11px] text-white/80 hover:bg-white/20 hover:text-white transition-all duration-200 w-full"
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {project.tech.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="rounded-md bg-white/5 border border-white/10 px-2 py-0.5 text-[10px] text-white/60"
                     >
-                      <ExternalLink className="h-3 w-3" />
-                      Visit Link
-                    </a>
-                  )}
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Visit Link at bottom right - now properly positioned */}
+                <div className="mt-auto pt-2 flex justify-end">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 border border-white/20 rounded-md text-[11px] text-white/80 hover:bg-white/20 hover:text-white transition-all duration-200"
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                    Visit Link
+                  </a>
                 </div>
               </div>
             ))}
@@ -200,23 +222,7 @@ export default function WorksPage() {
         </div>
       </main>
 
-      <footer className="relative z-10 flex items-center justify-between px-6 pb-8 sm:px-12">
-        <div className="flex items-center gap-2 text-xs text-white/40">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold text-white/80">
-            N
-          </span>
-          <span>© 2025 Portfolio.</span>
-        </div>
-        <div className="hidden gap-3 text-xs text-white/40 sm:flex">
-          <Link href="#privacy" className="hover:text-white/70">
-            Privacy
-          </Link>
-          <span aria-hidden="true">•</span>
-          <Link href="#terms" className="hover:text-white/70">
-            Terms
-          </Link>
-        </div>
-      </footer>
+      
     </div>
-  );
+  )
 }

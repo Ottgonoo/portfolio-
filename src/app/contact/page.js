@@ -40,7 +40,7 @@ export default function ContactPage() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_circle_at_10%_10%,rgba(99,102,241,0.35),transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_circle_at_90%_0%,rgba(236,72,153,0.28),transparent_60%)]" />
 
-      <header className="relative z-10 flex items-center justify-between px-6 py-6 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:px-12">
+      <header className="relative z-10 flex items-center justify-between px-4 py-6 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:px-12">
         <div className="flex items-center gap-3 sm:justify-self-start">
           <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 text-base font-semibold text-white/90 shadow-[0_0_30px_rgba(129,140,248,0.35)]">
             <Image
@@ -105,7 +105,7 @@ export default function ContactPage() {
         )}
       </header>
 
-      <main className="relative z-10 flex flex-1 flex-col items-center px-6 sm:px-12">
+      <main className="relative z-10 flex flex-1 flex-col items-center mt-8 sm:px-12">
         <div className="relative z-10 flex w-full max-w-3xl flex-col gap-10">
           <div className={`text-center transition-all duration-1000 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -217,23 +217,7 @@ export default function ContactPage() {
       </main>
 
 
-      <footer className="relative z-10 flex items-center justify-between px-6 pb-8 sm:px-12">
-        <div className="flex items-center gap-2 text-xs text-white/40">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold text-white/80">
-            N
-          </span>
-          <span>© 2025 Portfolio.</span>
-        </div>
-        <div className="hidden gap-3 text-xs text-white/40 sm:flex">
-          <Link href="#privacy" className="hover:text-white/70">
-            Privacy
-          </Link>
-          <span aria-hidden="true">•</span>
-          <Link href="#terms" className="hover:text-white/70">
-            Terms
-          </Link>
-        </div>
-      </footer>
+      
     </div>
   );
 }
