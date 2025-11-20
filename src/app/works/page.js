@@ -2,14 +2,9 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { ExternalLink, Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
-
-// Force rendering on client
-if (typeof window === 'undefined') {
-  // Server-side code if needed
-}
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -56,6 +51,7 @@ const projects = [
 
 export default function WorksPage() {
   const pathname = usePathname()
+  const router = useRouter()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -70,6 +66,11 @@ export default function WorksPage() {
     return pathname === href
   }
 
+  const handleMobileLinkClick = href => {
+    setIsMobileMenuOpen(false)
+    router.push(href)
+  }
+
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden text-white">
       {/* Background gradients */}
@@ -77,7 +78,7 @@ export default function WorksPage() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_circle_at_90%_0%,rgba(236,72,153,0.28),transparent_60%)]" />
 
       {/* Header */}
-      <header className="relative z-10 flex items-center justify-between px-6 py-6 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:px-12">
+      <header className="relative z-50 flex items-center justify-between px-6 py-6 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:px-12">
         <div className="flex items-center gap-3 sm:justify-self-start">
           <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 text-base font-semibold text-white/90 shadow-[0_0_30px_rgba(129,140,248,0.35)]">
             <Image
@@ -124,29 +125,36 @@ export default function WorksPage() {
           )}
         </button>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - FIXED */}
         {isMobileMenuOpen && (
-          <nav className="absolute top-full left-0 right-0 mt-2 mx-6 sm:hidden flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-300">
-            {navLinks.map(({ label, href }, index) => (
-              <Link
-                key={label}
-                href={href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`px-4 py-3 rounded-lg transition-all duration-300 animate-in fade-in slide-in-from-left-4 ${
-                  isActive(href)
-                    ? 'text-white bg-white/10 shadow-[0_4px_12px_rgba(168,85,247,0.3)] font-semibold'
-                    : 'text-white/60 hover:text-white hover:bg-white/5'
-                }`}
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
-        )}
-      </header>
+          <div className="fixed inset-0 z-50 sm:hidden">
+            {/* Backdrop */}
+            <div
+              className="absolute inset-0 bg-black/60"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
 
-      {/* Main content */}
+            {/* Menu */}
+            <nav className="absolute top-20 left-4 right-4 flex flex-col gap-2 rounded-2xl border border-white/20 bg-gray-900 p-4">
+              {navLinks.map(({ label, href }) => (
+                <button
+                  key={label}
+                  onClick={() => handleMobileLinkClick(href)}
+                  className={`px-4 py-3 rounded-lg text-white transition-colors text-left w-full ${
+                    isActive(href)
+                      ? 'bg-[radial-gradient(600px_circle_at_10%_10%,rgba(99,102,241,0.35),transparent_60%)] font-semibold'
+                      : 'hover:bg-white/10' 
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </nav>
+          </div>
+        )}
+      </header> 
+
+
       <main className="relative z-10 flex flex-1 flex-col items-center px-6 py-10 sm:px-12">
         <div className="relative z-10 flex w-full max-w-6xl flex-col gap-6">
           <div
@@ -204,7 +212,7 @@ export default function WorksPage() {
                   ))}
                 </div>
 
-                {/* Visit Link at bottom right - now properly positioned */}
+                {/* Visit Link at bottom right */}
                 <div className="mt-auto pt-2 flex justify-end">
                   <a
                     href={project.link}
@@ -222,7 +230,24 @@ export default function WorksPage() {
         </div>
       </main>
 
-      
+      <footer className="relative z-10 flex items-center justify-between px-6 pb-8 sm:px-12">
+        <div className="flex items-center gap-2 text-xs text-white/40">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold text-white/80">
+            N
+          </span>
+          <span>© 2025 Portfolio.</span>
+        </div> 
+
+        <div className="hidden gap-3 text-xs text-white/40 sm:flex">
+          <Link href="#privacy" className="hover:text-white/70">
+            Privacy
+          </Link>
+          <span aria-hidden="true">•</span>
+          <Link href="#terms" className="hover:text-white/70">
+            Terms
+          </Link>
+        </div>
+      </footer>
     </div>
   )
 }
